@@ -1,0 +1,4 @@
+
+[submodule "Source Code/Libraries/Quantum-Engine"]
+	path = Source Code/Libraries/Quantum-Engine
+	url = https://github.com/L4D15/Quantum-Engine.git
