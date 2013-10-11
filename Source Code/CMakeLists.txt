@@ -1,10 +1,14 @@
 # CMake minimun version required to compile
 cmake_minimum_required(VERSION 2.6)
 
+message("====================================")
 message("Building Makefile for Quantum")
+message("====================================")
 
 message("Source dir: ${CMAKE_SOURCE_DIR}")
 message("Binary dir: ${CMAKE_BINARY_DIR}")
+
+add_subdirectory("${CMAKE_SOURCE_DIR}/Libraries/Quantum-Engine")
 
 # =================================================================
 # Project properties
@@ -52,8 +56,8 @@ endforeach()
 # =================================================================
 # Include directories (containing .h files)
 # =================================================================
-SUBDIRLIST(INCLUDE_DIRECTORIES "${CMAKE_SOURCE_DIR}")
-file(GLOB_RECURSE HEADER_FILES "${CMAKE_SOURCE_DIR}/*.h")
+SUBDIRLIST(INCLUDE_DIRECTORIES "${CMAKE_SOURCE_DIR}/Game")
+file(GLOB_RECURSE HEADER_FILES "${CMAKE_SOURCE_DIR}/Game/*.h")
 
 message("-- Header Files (.h)")
 foreach(file ${HEADER_FILES})
@@ -64,8 +68,9 @@ endforeach()
 # Libraries
 # =================================================================
 # Quantum Engine
-find_library(QUANTUM_ENGINE_LIB NAMES QuantumEngine HINTS "${CMAKE_SOURCE_DIR}/../Libraries/Quantum-Engine/lib")
-set(INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} "${CMAKE_SOURCE_DIR}/../Libraries/Quantum-Engine/include")
+# Library is already present in the CMake scope from the subdirectory of the library, so we just need to add the path to the include folder
+# and add QuantumEngine (the name the library have in the subdir CMakeLists.txt) to the target_link_libraries (at the end of the file)
+set(INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} "${CMAKE_SOURCE_DIR}/Libraries/Quantum-Engine/include")
 
 # Artemis-Cpp
 find_library(ARTEMIS_LIB NAMES artemis)
@@ -110,6 +115,10 @@ endif(APPLE)
 # Executable
 # =================================================================
 include_directories(${INCLUDE_DIRECTORIES})
+message("Directories included in the Header search:")
+foreach(dir ${INCLUDE_DIRECTORIES})
+    message("    ${dir}")
+endforeach(dir)
 
 if (APPLE)
     add_executable(Quantum MACOSX_BUNDLE ${SOURCE_FILES})
@@ -124,7 +133,7 @@ else (APPLE)
     add_executable(Quantum ${SOURCE_FILES})
 endif(APPLE)
 
-target_link_libraries(Quantum ${QUANTUM_ENGINE_LIB} ${ARTEMIS_LIB} ${JSON_LIB} ${OPENGL_LIBRARY} ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY} ${SDL2_TTF_LIBRARY})
+target_link_libraries(Quantum QuantumEngine ${ARTEMIS_LIB} ${JSON_LIB} ${OPENGL_LIBRARY} ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY} ${SDL2_TTF_LIBRARY})
 
 # =================================================================
 # Resources
@@ -138,3 +147,7 @@ if(APPLE)
         PROPERTIES
         MACOSX_PACKAGE_LOCATION Resources)
 endif(APPLE)
+
+message("====================================")
+message("Quantum finished")
+message("====================================")
