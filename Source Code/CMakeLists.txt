@@ -12,13 +12,16 @@ message("Binary dir: ${CMAKE_BINARY_DIR}")
 # Project name
 project("Quantum")
 
+set(QUANTUM_VERSION "0.1")
+set(QUANTUM_VERSION_LONG "0.1 - Build 11-Oct-2013")
+
 # Specify build output directories
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 
 # Prevents cmake from following symbolic links using GLOB
-cmake_policy( SET CMP0009 NEW)
+cmake_policy(SET CMP0009 NEW)
 
 # =================================================================
 # Macros
@@ -37,9 +40,11 @@ ENDMACRO()
 # =================================================================
 # Source Files (.cpp files)
 # =================================================================
-file(GLOB_RECURSE SOURCE_FILES "${CMAKE_SOURCE_DIR}/*.cpp")
+file(GLOB_RECURSE SOURCE_FILES "${CMAKE_SOURCE_DIR}/Game/*.cpp")
+# Add the main file
+set(SOURCE_FILES ${SOURCE_FILES} "${CMAKE_SOURCE_DIR}/main.cpp")
 
-message("Source Files (.cpp)")
+message("-- Source Files (.cpp)")
 foreach(file ${SOURCE_FILES})
     message("    ${file}")
 endforeach()
@@ -50,7 +55,7 @@ endforeach()
 SUBDIRLIST(INCLUDE_DIRECTORIES "${CMAKE_SOURCE_DIR}")
 file(GLOB_RECURSE HEADER_FILES "${CMAKE_SOURCE_DIR}/*.h")
 
-message("Header Files (.h)")
+message("-- Header Files (.h)")
 foreach(file ${HEADER_FILES})
     message("    ${file}")
 endforeach()
@@ -108,8 +113,28 @@ include_directories(${INCLUDE_DIRECTORIES})
 
 if (APPLE)
     add_executable(Quantum MACOSX_BUNDLE ${SOURCE_FILES})
+    set(MACOSX_BUNDLE true)
+    set(MACOSX_BUNDLE_BUNDLE_NAME Quantum)
+    set(MACOSX_BUNDLE_INFO_STRING "Quantum ${QUANTUM_VERSION}")
+    set(MACOSX_BUNDLE_LONG_VERSION_STRING "${QUANTUM_VERSION_LONG}")
+    set(MACOSX_BUNDLE_SHORT_VERSION_STRING "${QUANTUM_VERSION}")
+    set(MACOSX_BUNDLE_BUNDLE_VERSION "${QUANTUM_VERSION}")
+    set(MACOSX_BUNDLE_ICON_FILE "${CMAKE_SOURCE_DIR}/../Assets/App Icon.icns")
 else (APPLE)
     add_executable(Quantum ${SOURCE_FILES})
 endif(APPLE)
 
 target_link_libraries(Quantum ${QUANTUM_ENGINE_LIB} ${ARTEMIS_LIB} ${JSON_LIB} ${OPENGL_LIBRARY} ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY} ${SDL2_TTF_LIBRARY})
+
+# =================================================================
+# Resources
+# =================================================================
+if(APPLE)
+    set_source_files_properties(
+        "${CMAKE_SOURCE_DIR}/../Assets/Images/bg.png"
+        "${CMAKE_SOURCE_DIR}/../Assets/Images/bg.json"
+        "${CMAKE_SOURCE_DIR}/../Assets/Images/zero.png"
+        "${CMAKE_SOURCE_DIR}/../Assets/Images/zero.json"
+        PROPERTIES
+        MACOSX_PACKAGE_LOCATION Resources)
+endif(APPLE)
