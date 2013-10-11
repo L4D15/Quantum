@@ -1,4 +1,14 @@
 ####
+# OS X
+#
+.DS_Store
+
+####
+# Qt Creator
+#
+CMakeLists.txt.user
+
+####
 # CMake output
 #
 CMakeCache.txt
