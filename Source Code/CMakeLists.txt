@@ -48,22 +48,11 @@ file(GLOB_RECURSE SOURCE_FILES "${CMAKE_SOURCE_DIR}/Game/*.cpp")
 # Add the main file
 set(SOURCE_FILES ${SOURCE_FILES} "${CMAKE_SOURCE_DIR}/main.cpp")
 
-message("-- Source Files (.cpp)")
-foreach(file ${SOURCE_FILES})
-    message("    ${file}")
-endforeach()
-
 # =================================================================
 # Include directories (containing .h files)
 # =================================================================
 SUBDIRLIST(INCLUDE_DIRECTORIES "${CMAKE_SOURCE_DIR}/Game")
 file(GLOB_RECURSE HEADER_FILES "${CMAKE_SOURCE_DIR}/Game/*.h")
-
-message("-- Header Files (.h)")
-foreach(file ${HEADER_FILES})
-    message("    ${file}")
-endforeach()
-
 # =================================================================
 # Libraries
 # =================================================================
@@ -112,6 +101,19 @@ if(APPLE)
 endif(APPLE)
 
 # =================================================================
+# Resources
+# =================================================================
+file(GLOB_RECURSE RESOURCE_FILES_IMAGES "${CMAKE_SOURCE_DIR}/../Assets/Images/*")
+message("Images: ${RESOURCE_FILES_IMAGES}")
+
+if(APPLE)
+    set_source_files_properties(
+        ${RESOURCE_FILES_IMAGES}
+        PROPERTIES
+        MACOSX_PACKAGE_LOCATION "Resources/Images")
+endif(APPLE)
+
+# =================================================================
 # Executable
 # =================================================================
 include_directories(${INCLUDE_DIRECTORIES})
@@ -120,8 +122,7 @@ foreach(dir ${INCLUDE_DIRECTORIES})
     message("    ${dir}")
 endforeach(dir)
 
-if (APPLE)
-    add_executable(Quantum MACOSX_BUNDLE ${SOURCE_FILES})
+if(APPLE)
     set(MACOSX_BUNDLE true)
     set(MACOSX_BUNDLE_BUNDLE_NAME Quantum)
     set(MACOSX_BUNDLE_INFO_STRING "Quantum ${QUANTUM_VERSION}")
@@ -129,24 +130,12 @@ if (APPLE)
     set(MACOSX_BUNDLE_SHORT_VERSION_STRING "${QUANTUM_VERSION}")
     set(MACOSX_BUNDLE_BUNDLE_VERSION "${QUANTUM_VERSION}")
     set(MACOSX_BUNDLE_ICON_FILE "${CMAKE_SOURCE_DIR}/../Assets/App Icon.icns")
-else (APPLE)
+    add_executable(Quantum MACOSX_BUNDLE ${SOURCE_FILES} ${RESOURCE_FILES_IMAGES})
+else(APPLE)
     add_executable(Quantum ${SOURCE_FILES})
 endif(APPLE)
 
 target_link_libraries(Quantum QuantumEngine ${ARTEMIS_LIB} ${JSON_LIB} ${OPENGL_LIBRARY} ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY} ${SDL2_TTF_LIBRARY})
-
-# =================================================================
-# Resources
-# =================================================================
-if(APPLE)
-    set_source_files_properties(
-        "${CMAKE_SOURCE_DIR}/../Assets/Images/bg.png"
-        "${CMAKE_SOURCE_DIR}/../Assets/Images/bg.json"
-        "${CMAKE_SOURCE_DIR}/../Assets/Images/zero.png"
-        "${CMAKE_SOURCE_DIR}/../Assets/Images/zero.json"
-        PROPERTIES
-        MACOSX_PACKAGE_LOCATION Resources)
-endif(APPLE)
 
 message("====================================")
 message("Quantum finished")
