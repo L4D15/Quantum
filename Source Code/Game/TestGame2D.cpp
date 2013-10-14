@@ -2,7 +2,7 @@
 #include "Scenes/TestScene.h"
 
 TestGame2D::TestGame2D() :
-    Game2D("Test Game 2D")
+    Game2D("Quantum")
 {
 
 }

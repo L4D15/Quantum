@@ -6,16 +6,13 @@
 TestScene::TestScene() :
     Scene("Test Scene")
 {
-
     // This Scene will have a Physics and rendering system
     this->physicsSystem = (Systems2D::Physics*) AddSystem(new Systems2D::Physics());
     this->renderingSystem = (Systems2D::AssetRendering*) AddSystem(new Systems2D::AssetRendering());
 
     // Resources
-    image = new Assets2D::SpriteSheet("Zero", "Quantum.app/Contents/Resources/Images/zero.png");
-    sprite = new Assets2D::AnimatedSprite(image);
-
-    bgImage = new Assets2D::SpriteSheet("Background", "Quantum.app/Contents/Resources/Images/bg.png");
+    sprite = Game::resourceManager.GetAnimatedSprite("zero.png");
+    bgImage = Game::resourceManager.GetSprite("bg.png");
 
     // Objects
     object = CreateGameObject("Object");

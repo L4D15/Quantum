@@ -6,7 +6,7 @@
 #include "quantum/Libraries.h"
 #include "quantum/systems/2D/Physics.h"
 #include "quantum/systems/2D/AssetRendering.h"
-#include "quantum/SpriteSheet.h"
+#include "quantum/Sprite.h"
 #include "quantum/AnimatedSprite.h"
 
 class TestScene : public Scene
@@ -30,9 +30,9 @@ private:
     GameObject* object;
     GameObject* background;
 
-    Assets2D::SpriteSheet* image;
+    Assets2D::Sprite* image;
     Assets2D::AnimatedSprite* sprite;
-    Assets2D::SpriteSheet* bgImage;
+    Assets2D::Sprite* bgImage;
 
     Systems2D::Physics* physicsSystem;
     Systems2D::AssetRendering* renderingSystem;
