@@ -17,7 +17,7 @@ add_subdirectory("${CMAKE_SOURCE_DIR}/Libraries/Quantum-Engine")
 project("Quantum")
 
 set(QUANTUM_VERSION "0.1")
-set(QUANTUM_VERSION_LONG "0.1 - Build 11-Oct-2013")
+set(QUANTUM_VERSION_LONG "0.1 - Build 14-Oct-2013")
 
 # Specify build output directories
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
@@ -110,7 +110,7 @@ if(APPLE)
     set_source_files_properties(
         ${RESOURCE_FILES_IMAGES}
         PROPERTIES
-        MACOSX_PACKAGE_LOCATION "Resources/Images")
+        MACOSX_PACKAGE_LOCATION "Resources/Assets/Images")
 endif(APPLE)
 
 # =================================================================
