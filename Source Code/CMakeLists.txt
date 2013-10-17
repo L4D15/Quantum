@@ -60,45 +60,8 @@ file(GLOB_RECURSE HEADER_FILES "${CMAKE_SOURCE_DIR}/Game/*.h")
 # Library is already present in the CMake scope from the subdirectory of the library, so we just need to add the path to the include folder
 # and add QuantumEngine (the name the library have in the subdir CMakeLists.txt) to the target_link_libraries (at the end of the file)
 set(INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} "${CMAKE_SOURCE_DIR}/Libraries/Quantum-Engine/include")
-
-# Artemis-Cpp
-find_library(ARTEMIS_LIB NAMES artemis)
-
-# JsonCpp
-add_library(JSON_LIB STATIC IMPORTED json)
-set_target_properties(JSON_LIB PROPERTIES IMPORTED_LOCATION "/usr/local/lib")
-
-# OpenGL
-if(APPLE)
-    find_library(OpenGL_LIBRARY OpenGL)
-    set(OPENGL_LIBRARY ${OPENGL_LIBRARIES})
-    if(NOT OpenGL_LIBRARY)
-        message (FATAL_ERROR "Failed to find OpenGL in your Frameworks directory")
-    endif(NOT OpenGL_LIBRARY)
-endif(APPLE)
-
-# SDL2 Libraries
-if(APPLE)
-    find_library(SDL2_LIBRARY SDL2)
-    if(NOT SDL2_LIBRARY)
-        message(FATAL_ERROR "Failed to find SDL2 in your Frameworks directory.")
-    endif(NOT SDL2_LIBRARY)
-
-    find_library(SDL2_IMAGE_LIBRARY SDL2_image)
-    if(NOT SDL2_IMAGE_LIBRARY)
-        message(FATAL_ERROR "Failed to find SDL2_image in your Frameworks directory.")
-    endif(NOT SDL2_IMAGE_LIBRARY)
-
-    find_library(SDL2_TTF_LIBRARY SDL2_ttf)
-    if(NOT SDL2_TTF_LIBRARY)
-        message(FATAL_ERROR "Failed to find SDL2_ttf in your Frameworks directory.")
-    endif(NOT SDL2_TTF_LIBRARY)
-endif(APPLE)
-
-# Additional step for Mac OS X
-if(APPLE)
-    mark_as_advanced(OPENGL_LIBRARY SDL2_LIBRARY SDL2_IMAGE_LIBRARY SDL2_TTF_LIBRARY)
-endif(APPLE)
+set(INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} "${CMAKE_SOURCE_DIR}/Libraries/Quantum-Engine/lib/Artemis-Cpp/include")
+set(INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} "${CMAKE_SOURCE_DIR}/Libraries/Quantum-Engine/lib/JsonCpp/include")
 
 # =================================================================
 # Resources
@@ -135,7 +98,15 @@ else(APPLE)
     add_executable(Quantum ${SOURCE_FILES})
 endif(APPLE)
 
-target_link_libraries(Quantum QuantumEngine ${ARTEMIS_LIB} ${JSON_LIB} ${OPENGL_LIBRARY} ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY} ${SDL2_TTF_LIBRARY})
+target_link_libraries(Quantum QuantumEngine)
+
+# =================================================================
+# Resources
+# =================================================================
+#add_custom_command(TARGET Quantum PRE_BUILD
+#                   COMMAND ${CMAKE_COMMAND} -E copy_directory
+#                       "${CMAKE_CURRENT_SOURCE_DIR}/Assets" "${CMAKE_CURRENT_BINARY_DIR}/Assets")
+file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/../Assets" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/bin")
 
 message("====================================")
 message("Quantum finished")
