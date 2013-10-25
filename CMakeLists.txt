@@ -108,6 +108,10 @@ target_link_libraries(Quantum QuantumEngine)
 #                       "${CMAKE_CURRENT_SOURCE_DIR}/Assets" "${CMAKE_CURRENT_BINARY_DIR}/Assets")
 file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/assets" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/bin")
 
+if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+  file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/res/bin" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}")
+endif(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+
 message("====================================")
 message("Quantum finished")
 message("====================================")
