@@ -8,7 +8,7 @@ message("====================================")
 message("Source dir: ${CMAKE_SOURCE_DIR}")
 message("Binary dir: ${CMAKE_BINARY_DIR}")
 
-add_subdirectory("${CMAKE_SOURCE_DIR}/Libraries/Quantum-Engine")
+add_subdirectory("${CMAKE_SOURCE_DIR}/src/lib/Quantum-Engine")
 
 # =================================================================
 # Project properties
@@ -44,36 +44,36 @@ ENDMACRO()
 # =================================================================
 # Source Files (.cpp files)
 # =================================================================
-file(GLOB_RECURSE SOURCE_FILES "${CMAKE_SOURCE_DIR}/Game/*.cpp")
+file(GLOB_RECURSE SOURCE_FILES "${CMAKE_SOURCE_DIR}/src/Game/*.cpp")
 # Add the main file
-set(SOURCE_FILES ${SOURCE_FILES} "${CMAKE_SOURCE_DIR}/main.cpp")
+set(SOURCE_FILES ${SOURCE_FILES} "${CMAKE_SOURCE_DIR}/src/main.cpp")
 
 # =================================================================
 # Include directories (containing .h files)
 # =================================================================
-SUBDIRLIST(INCLUDE_DIRECTORIES "${CMAKE_SOURCE_DIR}/Game")
-file(GLOB_RECURSE HEADER_FILES "${CMAKE_SOURCE_DIR}/Game/*.h")
+SUBDIRLIST(INCLUDE_DIRECTORIES "${CMAKE_SOURCE_DIR}/src/Game")
+file(GLOB_RECURSE HEADER_FILES "${CMAKE_SOURCE_DIR}/src/Game/*.h")
 # =================================================================
 # Libraries
 # =================================================================
 # Quantum Engine
 # Library is already present in the CMake scope from the subdirectory of the library, so we just need to add the path to the include folder
 # and add QuantumEngine (the name the library have in the subdir CMakeLists.txt) to the target_link_libraries (at the end of the file)
-set(INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} "${CMAKE_SOURCE_DIR}/Libraries/Quantum-Engine/include")
-set(INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} "${CMAKE_SOURCE_DIR}/Libraries/Quantum-Engine/lib/Artemis-Cpp/include")
-set(INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} "${CMAKE_SOURCE_DIR}/Libraries/Quantum-Engine/lib/JsonCpp/include")
+set(INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} "${CMAKE_SOURCE_DIR}/src/lib/Quantum-Engine/include")
+set(INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} "${CMAKE_SOURCE_DIR}/src/lib/Quantum-Engine/lib/Artemis-Cpp/include")
+set(INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} "${CMAKE_SOURCE_DIR}/src/lib/Quantum-Engine/lib/JsonCpp/include")
 
 # =================================================================
 # Resources
 # =================================================================
-file(GLOB_RECURSE RESOURCE_FILES_IMAGES "${CMAKE_SOURCE_DIR}/../Assets/Images/*")
+file(GLOB_RECURSE RESOURCE_FILES_IMAGES "${CMAKE_SOURCE_DIR}/../assets/images/*")
 message("Images: ${RESOURCE_FILES_IMAGES}")
 
 if(APPLE)
     set_source_files_properties(
         ${RESOURCE_FILES_IMAGES}
         PROPERTIES
-        MACOSX_PACKAGE_LOCATION "Resources/Assets/Images")
+        MACOSX_PACKAGE_LOCATION "Resources/assets/images")
 endif(APPLE)
 
 # =================================================================
@@ -92,7 +92,7 @@ if(APPLE)
     set(MACOSX_BUNDLE_LONG_VERSION_STRING "${QUANTUM_VERSION_LONG}")
     set(MACOSX_BUNDLE_SHORT_VERSION_STRING "${QUANTUM_VERSION}")
     set(MACOSX_BUNDLE_BUNDLE_VERSION "${QUANTUM_VERSION}")
-    set(MACOSX_BUNDLE_ICON_FILE "${CMAKE_SOURCE_DIR}/../Assets/App Icon.icns")
+    set(MACOSX_BUNDLE_ICON_FILE "${CMAKE_SOURCE_DIR}/assets/App Icon.icns")
     add_executable(Quantum MACOSX_BUNDLE ${SOURCE_FILES} ${RESOURCE_FILES_IMAGES})
 else(APPLE)
     add_executable(Quantum ${SOURCE_FILES})
@@ -106,7 +106,7 @@ target_link_libraries(Quantum QuantumEngine)
 #add_custom_command(TARGET Quantum PRE_BUILD
 #                   COMMAND ${CMAKE_COMMAND} -E copy_directory
 #                       "${CMAKE_CURRENT_SOURCE_DIR}/Assets" "${CMAKE_CURRENT_BINARY_DIR}/Assets")
-file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/../Assets" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/bin")
+file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/assets" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/bin")
 
 message("====================================")
 message("Quantum finished")
