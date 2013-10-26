@@ -10,7 +10,7 @@
         <in>TestGame2D.cpp</in>
         <in>TestGame2D.h</in>
       </df>
-      <df name="Libraries">
+      <df name="lib">
         <df name="Quantum-Engine">
           <df name="include">
             <df name="quantum">
@@ -198,6 +198,76 @@
                 <df name="data">
                 </df>
                 <df name="jsonchecker">
+                </df>
+              </df>
+            </df>
+          </df>
+          <df name="src">
+            <df name="engine">
+              <df name="components">
+                <df name="2D">
+                  <in>AssetRenderer.cpp</in>
+                  <in>Camera.cpp</in>
+                  <in>Physics.cpp</in>
+                  <in>Transform2D.cpp</in>
+                </df>
+                <in>Component.cpp</in>
+              </df>
+              <df name="systems">
+                <df name="2D">
+                  <in>AssetRendering.cpp</in>
+                  <in>Physics.cpp</in>
+                </df>
+              </df>
+              <in>AnimatedSprite.cpp</in>
+              <in>Color.cpp</in>
+              <in>EventListener.cpp</in>
+              <in>Game.cpp</in>
+              <in>Game2D.cpp</in>
+              <in>Game3D.cpp</in>
+              <in>GameObject.cpp</in>
+              <in>Math.cpp</in>
+              <in>ParallaxScrolling.cpp</in>
+              <in>RenderizableAsset.cpp</in>
+              <in>ResourceManager.cpp</in>
+              <in>Scene.cpp</in>
+              <in>SceneManager.cpp</in>
+              <in>Sprite.cpp</in>
+              <in>SpriteSheetAnimation.cpp</in>
+              <in>Vector2D.cpp</in>
+              <in>Vector3D.cpp</in>
+              <in>Window.cpp</in>
+            </df>
+          </df>
+        </df>
+      </df>
+      <df name="Libraries">
+        <df name="Quantum-Engine">
+          <df name="lib">
+            <df name="Artemis-Cpp">
+              <df name="src">
+                <in>Component.cpp</in>
+                <in>ComponentType.cpp</in>
+                <in>ComponentTypeManager.cpp</in>
+                <in>DelayedEntityProcessingSystem.cpp</in>
+                <in>DelayedEntitySystem.cpp</in>
+                <in>Entity.cpp</in>
+                <in>EntityManager.cpp</in>
+                <in>EntityProcessingSystem.cpp</in>
+                <in>EntitySystem.cpp</in>
+                <in>GroupManager.cpp</in>
+                <in>SystemBitManager.cpp</in>
+                <in>SystemManager.cpp</in>
+                <in>TagManager.cpp</in>
+                <in>World.cpp</in>
+              </df>
+            </df>
+            <df name="JsonCpp">
+              <df name="src">
+                <df name="lib_json">
+                  <in>json_reader.cpp</in>
+                  <in>json_value.cpp</in>
+                  <in>json_writer.cpp</in>
                 </df>
               </df>
             </df>

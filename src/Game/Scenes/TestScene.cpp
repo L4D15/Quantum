@@ -11,7 +11,7 @@ TestScene::TestScene() :
     this->renderingSystem = (Systems2D::AssetRendering*) AddSystem(new Systems2D::AssetRendering());
 
     // Resources
-    sprite = Game::resourceManager.GetAnimatedSprite("zero.png");
+    sprite = Game::resourceManager.GetAnimatedSprite("bonfire.png");
     bgImage = Game::resourceManager.GetSprite("bg.png");
 
     // Objects
