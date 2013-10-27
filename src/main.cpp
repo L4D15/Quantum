@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Game/TestGame2D.h"
+#include "game/TestGame2D.h"
 
 int main(int argc, char** argv)
 {

@@ -19,6 +19,7 @@ TestScene::TestScene() :
     object->SetPosition(0, 0);
     object->AddComponent(new Components2D::Physics(*object));
     object->AddComponent(new Components2D::AssetRenderer(*object, mainCamera, sprite));
+    object->AddComponent(new Components2D::Collisions(*object));
 
     background = CreateGameObject("Background");
     background->AddComponent(new Components2D::AssetRenderer(*background, mainCamera, bgImage, -1, 1000));
