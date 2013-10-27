@@ -44,15 +44,15 @@ ENDMACRO()
 # =================================================================
 # Source Files (.cpp files)
 # =================================================================
-file(GLOB_RECURSE SOURCE_FILES "${CMAKE_SOURCE_DIR}/src/Game/*.cpp")
+file(GLOB_RECURSE SOURCE_FILES "${CMAKE_SOURCE_DIR}/src/game/*.cpp")
 # Add the main file
 set(SOURCE_FILES ${SOURCE_FILES} "${CMAKE_SOURCE_DIR}/src/main.cpp")
 
 # =================================================================
 # Include directories (containing .h files)
 # =================================================================
-SUBDIRLIST(INCLUDE_DIRECTORIES "${CMAKE_SOURCE_DIR}/src/Game")
-file(GLOB_RECURSE HEADER_FILES "${CMAKE_SOURCE_DIR}/src/Game/*.h")
+SUBDIRLIST(INCLUDE_DIRECTORIES "${CMAKE_SOURCE_DIR}/src/game")
+file(GLOB_RECURSE HEADER_FILES "${CMAKE_SOURCE_DIR}/src/game/*.h")
 # =================================================================
 # Libraries
 # =================================================================

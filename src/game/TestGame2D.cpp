@@ -1,5 +1,5 @@
 #include "TestGame2D.h"
-#include "Scenes/TestScene.h"
+#include "scenes/TestScene.h"
 
 TestGame2D::TestGame2D() :
     Game2D("Quantum")

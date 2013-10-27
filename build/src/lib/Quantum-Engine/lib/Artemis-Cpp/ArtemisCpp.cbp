@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+   <FileVersion major="1" minor="6" />
+   <Project>
+      <Option title="ArtemisCpp" />
+      <Option makefile_is_custom="1" />
+      <Option compiler="gcc" />
+      <Option virtualFolders="CMake Files\;CMake Files\src\;CMake Files\src\lib\;CMake Files\src\lib\Quantum-Engine\;CMake Files\src\lib\Quantum-Engine\lib\;CMake Files\src\lib\Quantum-Engine\lib\Artemis-Cpp\;CMake Files\src\lib\Quantum-Engine\lib\JsonCpp\;" />
+      <Build>
+      <Target title="all">
+         <Option working_dir="/home/ladis/Projects/Quantum/build/src/lib/Quantum-Engine/lib/Artemis-Cpp" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/ladis/Projects/Quantum/build/src/lib/Quantum-Engine/lib/Artemis-Cpp/Makefile&quot;  VERBOSE=1 all" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/ladis/Projects/Quantum/build/src/lib/Quantum-Engine/lib/Artemis-Cpp/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/ladis/Projects/Quantum/build/src/lib/Quantum-Engine/lib/Artemis-Cpp/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/ladis/Projects/Quantum/build/src/lib/Quantum-Engine/lib/Artemis-Cpp/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="ArtemisCpp">
+         <Option output="/home/ladis/Projects/Quantum/build/lib/libArtemisCpp.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/ladis/Projects/Quantum/build/src/lib/Quantum-Engine/lib/Artemis-Cpp" />
+         <Option object_output="./" />
+         <Option type="2" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/home/ladis/Projects/Quantum/src/lib/Quantum-Engine/lib/Artemis-Cpp/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/ladis/Projects/Quantum/build/src/lib/Quantum-Engine/lib/Artemis-Cpp/Makefile&quot;  VERBOSE=1 ArtemisCpp" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/ladis/Projects/Quantum/build/src/lib/Quantum-Engine/lib/Artemis-Cpp/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/ladis/Projects/Quantum/build/src/lib/Quantum-Engine/lib/Artemis-Cpp/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/ladis/Projects/Quantum/build/src/lib/Quantum-Engine/lib/Artemis-Cpp/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="ArtemisCpp/fast">
+         <Option output="/home/ladis/Projects/Quantum/build/lib/libArtemisCpp.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/ladis/Projects/Quantum/build/src/lib/Quantum-Engine/lib/Artemis-Cpp" />
+         <Option object_output="./" />
+         <Option type="2" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/home/ladis/Projects/Quantum/src/lib/Quantum-Engine/lib/Artemis-Cpp/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/ladis/Projects/Quantum/build/src/lib/Quantum-Engine/lib/Artemis-Cpp/Makefile&quot;  VERBOSE=1 ArtemisCpp/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/ladis/Projects/Quantum/build/src/lib/Quantum-Engine/lib/Artemis-Cpp/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/ladis/Projects/Quantum/build/src/lib/Quantum-Engine/lib/Artemis-Cpp/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/ladis/Projects/Quantum/build/src/lib/Quantum-Engine/lib/Artemis-Cpp/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      </Build>
+      <Unit filename="/home/ladis/Projects/Quantum/src/lib/Quantum-Engine/lib/Artemis-Cpp/src/Component.cpp">
+      </Unit>
+      <Unit filename="/home/ladis/Projects/Quantum/src/lib/Quantum-Engine/lib/Artemis-Cpp/src/ComponentType.cpp">
+      </Unit>
+      <Unit filename="/home/ladis/Projects/Quantum/src/lib/Quantum-Engine/lib/Artemis-Cpp/src/ComponentTypeManager.cpp">
+      </Unit>
+      <Unit filename="/home/ladis/Projects/Quantum/src/lib/Quantum-Engine/lib/Artemis-Cpp/src/DelayedEntityProcessingSystem.cpp">
+      </Unit>
+      <Unit filename="/home/ladis/Projects/Quantum/src/lib/Quantum-Engine/lib/Artemis-Cpp/src/DelayedEntitySystem.cpp">
+      </Unit>
+      <Unit filename="/home/ladis/Projects/Quantum/src/lib/Quantum-Engine/lib/Artemis-Cpp/src/Entity.cpp">
+      </Unit>
+      <Unit filename="/home/ladis/Projects/Quantum/src/lib/Quantum-Engine/lib/Artemis-Cpp/src/EntityManager.cpp">
+      </Unit>
+      <Unit filename="/home/ladis/Projects/Quantum/src/lib/Quantum-Engine/lib/Artemis-Cpp/src/EntityProcessingSystem.cpp">
+      </Unit>
+      <Unit filename="/home/ladis/Projects/Quantum/src/lib/Quantum-Engine/lib/Artemis-Cpp/src/EntitySystem.cpp">
+      </Unit>
+      <Unit filename="/home/ladis/Projects/Quantum/src/lib/Quantum-Engine/lib/Artemis-Cpp/src/GroupManager.cpp">
+      </Unit>
+      <Unit filename="/home/ladis/Projects/Quantum/src/lib/Quantum-Engine/lib/Artemis-Cpp/src/SystemBitManager.cpp">
+      </Unit>
+      <Unit filename="/home/ladis/Projects/Quantum/src/lib/Quantum-Engine/lib/Artemis-Cpp/src/SystemManager.cpp">
+      </Unit>
+      <Unit filename="/home/ladis/Projects/Quantum/src/lib/Quantum-Engine/lib/Artemis-Cpp/src/TagManager.cpp">
+      </Unit>
+      <Unit filename="/home/ladis/Projects/Quantum/src/lib/Quantum-Engine/lib/Artemis-Cpp/src/World.cpp">
+      </Unit>
+      <Unit filename="/home/ladis/Projects/Quantum/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\" />
+      </Unit>
+      <Unit filename="/home/ladis/Projects/Quantum/src/lib/Quantum-Engine/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\src\lib\Quantum-Engine\" />
+      </Unit>
+      <Unit filename="/home/ladis/Projects/Quantum/src/lib/Quantum-Engine/lib/Artemis-Cpp/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\src\lib\Quantum-Engine\lib\Artemis-Cpp\" />
+      </Unit>
+      <Unit filename="/home/ladis/Projects/Quantum/src/lib/Quantum-Engine/lib/Artemis-Cpp/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\src\lib\Quantum-Engine\lib\Artemis-Cpp\" />
+      </Unit>
+      <Unit filename="/home/ladis/Projects/Quantum/src/lib/Quantum-Engine/lib/Artemis-Cpp/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\src\lib\Quantum-Engine\lib\Artemis-Cpp\" />
+      </Unit>
+      <Unit filename="/home/ladis/Projects/Quantum/src/lib/Quantum-Engine/lib/JsonCpp/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\src\lib\Quantum-Engine\lib\JsonCpp\" />
+      </Unit>
+      <Unit filename="/home/ladis/Projects/Quantum/src/lib/Quantum-Engine/lib/JsonCpp/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\src\lib\Quantum-Engine\lib\JsonCpp\" />
+      </Unit>
+      <Unit filename="/home/ladis/Projects/Quantum/src/lib/Quantum-Engine/lib/JsonCpp/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\src\lib\Quantum-Engine\lib\JsonCpp\" />
+      </Unit>
+   </Project>
+</CodeBlocks_project_file>
