@@ -7,24 +7,23 @@ TestScene::TestScene() :
     Scene("Test Scene")
 {
     // This Scene will have a Physics and rendering system
-    this->physicsSystem = (Systems2D::Physics*) AddSystem(new Systems2D::Physics());
-    this->renderingSystem = (Systems2D::AssetRendering*) AddSystem(new Systems2D::AssetRendering());
+    this->physicsSystem = (systems2D::Physics*) addSystem(new systems2D::Physics());
+    this->renderingSystem = (systems2D::AssetRendering*) addSystem(new systems2D::AssetRendering());
 
     // Resources
-    sprite = Game::resourceManager.GetAnimatedSprite("bonfire.png");
-    bgImage = Game::resourceManager.GetSprite("bg.png");
+    sprite = Game::resourceManager.getAnimatedSprite("bonfire.png");
+    bgImage = Game::resourceManager.getSprite("bg.png");
 
     // Objects
-    object = CreateGameObject("Object");
-    object->SetPosition(0, 0);
-    object->AddComponent(new Components2D::Physics(*object));
-    object->AddComponent(new Components2D::AssetRenderer(*object, mainCamera, sprite));
-    object->AddComponent(new Components2D::Collisions(*object));
+    object = createGameObject("Object");
+    object->setPosition(0, 0);
+    object->addComponent(new components2D::Physics(*object));
+    object->addComponent(new components2D::AssetRenderer(*object, mainCamera, sprite));
 
-    background = CreateGameObject("Background");
-    background->AddComponent(new Components2D::AssetRenderer(*background, mainCamera, bgImage, -1, 1000));
+    background = createGameObject("Background");
+    background->addComponent(new components2D::AssetRenderer(*background, mainCamera, bgImage, -1, 1000));
 
-    mainCamera->AddComponent(new Components2D::Physics(*mainCamera));
+    mainCamera->addComponent(new components2D::Physics(*mainCamera));
 }
 
 TestScene::~TestScene()
@@ -32,81 +31,81 @@ TestScene::~TestScene()
 
 }
 
-void TestScene::OnActivate()
+void TestScene::onActivate()
 {
     keyDown = false;
 }
 
-void TestScene::OnDeactivate()
+void TestScene::onDeactivate()
 {
 
 }
 
-void TestScene::OnLoop()
+void TestScene::onLoop()
 {
-    Scene::OnLoop();
+    Scene::onLoop();
 
     // Process systems
     physicsSystem->process();
 
     // If there is no directional key pressed, smoot the stop of the camera
-    Components2D::Physics* p;
-    p = (Components2D::Physics*) mainCamera->GetComponent<Components2D::Physics>();
+    components2D::Physics* p;
+    p = (components2D::Physics*) mainCamera->getComponent<components2D::Physics>();
     if (keyDown == false && p->GetVelocity() != Vector2D(0,0))
     {
         // Camera Smoothing
         Vector2D velocity;
 
-        velocity = Math::Interpolate(Math::Interpolation::EasyIn, p->GetVelocity(), Vector2D(0,0), Math::Normalize(timeKeyUp, timeKeyUp + 1000, Game::GetTime()));
+        velocity = Math::interpolate(Math::Interpolation::EasyIn, p->GetVelocity(), Vector2D(0,0), Math::Normalize(timeKeyUp, timeKeyUp + 1000, Game::getTime()));
         p->SetVelocity(velocity);
     }
 }
 
-void TestScene::OnRender()
+void TestScene::onRender()
 {
     this->renderingSystem->process();
-    Scene::OnRender();
+    Scene::onRender();
 }
 
 
-void TestScene::OnKeyDown(SDL_Keycode key, Uint16 mod)
+void TestScene::onKeyDown(SDL_Keycode key, Uint16 mod)
 {
-    Components2D::Physics* p;
+    components2D::Physics* p;
     switch (key)
     {
     case SDLK_ESCAPE:
-        Game::Terminate();
+        Game::terminate();
         break;
 
     case SDLK_RIGHT:
-        p = (Components2D::Physics*) mainCamera->GetComponent<Components2D::Physics>();
+        p = (components2D::Physics*) mainCamera->getComponent<components2D::Physics>();
         p->AddVelocity(5.0f, 0.0f);
         break;
 
     case SDLK_LEFT:
-        p = (Components2D::Physics*) mainCamera->GetComponent<Components2D::Physics>();
+        p = (components2D::Physics*) mainCamera->getComponent<components2D::Physics>();
         p->AddVelocity(-5.0f, 0.0f);
         break;
 
     case SDLK_UP:
-        p = (Components2D::Physics*) mainCamera->GetComponent<Components2D::Physics>();
+        p = (components2D::Physics*) mainCamera->getComponent<components2D::Physics>();
         p->AddVelocity(0.0f, -5.0f);
         break;
 
     case SDLK_DOWN:
-        p = (Components2D::Physics*) mainCamera->GetComponent<Components2D::Physics>();
+        p = (components2D::Physics*) mainCamera->getComponent<components2D::Physics>();
         p->AddVelocity(0.0f, 5.0f);
         break;
     }
     this->keyDown = true;
 }
 
-void TestScene::OnKeyUp(SDL_Keycode key, Uint16 mod)
+void TestScene::onKeyUp(SDL_Keycode key, Uint16 mod)
 {
     // If we transition between pressed and unpressed
     if (keyDown == true)
     {
-        timeKeyUp = Game::GetTime();
+        timeKeyUp = Game::getTime();
     }
 
     keyDown = false;

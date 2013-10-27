@@ -15,27 +15,27 @@ public:
     TestScene();
     ~TestScene();
 
-    void OnActivate();
+    void onActivate();
 
-    void OnDeactivate();
+    void onDeactivate();
 
-    void OnRender();
+    void onRender();
 
-    void OnLoop();
+    void onLoop();
 
-    void OnKeyDown(SDL_Keycode key, Uint16 mod);
-    void OnKeyUp(SDL_Keycode key, Uint16 mod);
+    void onKeyDown(SDL_Keycode key, Uint16 mod);
+    void onKeyUp(SDL_Keycode key, Uint16 mod);
 
 private:
     GameObject* object;
     GameObject* background;
 
-    Assets2D::Sprite* image;
-    Assets2D::AnimatedSprite* sprite;
-    Assets2D::Sprite* bgImage;
+    assets2D::Sprite* image;
+    assets2D::AnimatedSprite* sprite;
+    assets2D::Sprite* bgImage;
 
-    Systems2D::Physics* physicsSystem;
-    Systems2D::AssetRendering* renderingSystem;
+    systems2D::Physics* physicsSystem;
+    systems2D::AssetRendering* renderingSystem;
 
     // Control related
     int timeKeyUp;
