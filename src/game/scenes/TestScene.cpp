@@ -51,13 +51,13 @@ void TestScene::onLoop()
     // If there is no directional key pressed, smoot the stop of the camera
     components2D::Physics* p;
     p = (components2D::Physics*) mainCamera->getComponent<components2D::Physics>();
-    if (keyDown == false && p->GetVelocity() != Vector2D(0,0))
+    if (keyDown == false && p->getVelocity() != Vector2D(0,0))
     {
         // Camera Smoothing
         Vector2D velocity;
 
-        velocity = Math::interpolate(Math::Interpolation::EasyIn, p->GetVelocity(), Vector2D(0,0), Math::Normalize(timeKeyUp, timeKeyUp + 1000, Game::getTime()));
-        p->SetVelocity(velocity);
+        velocity = math::interpolate(math::interpolation::EasyIn, p->getVelocity(), Vector2D(0,0), math::Normalize(timeKeyUp, timeKeyUp + 1000, Game::getTime()));
+        p->setVelocity(velocity);
     }
 }
 
@@ -79,22 +79,22 @@ void TestScene::onKeyDown(SDL_Keycode key, Uint16 mod)
 
     case SDLK_RIGHT:
         p = (components2D::Physics*) mainCamera->getComponent<components2D::Physics>();
-        p->AddVelocity(5.0f, 0.0f);
+        p->addVelocity(5.0f, 0.0f);
         break;
 
     case SDLK_LEFT:
         p = (components2D::Physics*) mainCamera->getComponent<components2D::Physics>();
-        p->AddVelocity(-5.0f, 0.0f);
+        p->addVelocity(-5.0f, 0.0f);
         break;
 
     case SDLK_UP:
         p = (components2D::Physics*) mainCamera->getComponent<components2D::Physics>();
-        p->AddVelocity(0.0f, -5.0f);
+        p->addVelocity(0.0f, -5.0f);
         break;
 
     case SDLK_DOWN:
         p = (components2D::Physics*) mainCamera->getComponent<components2D::Physics>();
-        p->AddVelocity(0.0f, 5.0f);
+        p->addVelocity(0.0f, 5.0f);
         break;
     }
     this->keyDown = true;

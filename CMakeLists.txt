@@ -62,6 +62,11 @@ file(GLOB_RECURSE HEADER_FILES "${CMAKE_SOURCE_DIR}/src/game/*.h")
 set(INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} "${CMAKE_SOURCE_DIR}/src/lib/Quantum-Engine/include")
 set(INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} "${CMAKE_SOURCE_DIR}/src/lib/Quantum-Engine/lib/Artemis-Cpp/include")
 set(INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} "${CMAKE_SOURCE_DIR}/src/lib/Quantum-Engine/lib/JsonCpp/include")
+set(INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} "${CMAKE_SOURCE_DIR}/src/lib/Quantum-Engine/lib/Lua/src")
+
+if(WIN32)
+    set(INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} "C:/Program Files (x86)/lua/include")
+endif(WIN32)
 
 # =================================================================
 # Resources
@@ -103,13 +108,11 @@ target_link_libraries(Quantum QuantumEngine)
 # =================================================================
 # Resources
 # =================================================================
-#add_custom_command(TARGET Quantum PRE_BUILD
-#                   COMMAND ${CMAKE_COMMAND} -E copy_directory
-#                       "${CMAKE_CURRENT_SOURCE_DIR}/Assets" "${CMAKE_CURRENT_BINARY_DIR}/Assets")
 file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/assets" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/bin")
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
-  file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/res/bin" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}")
+    file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/res/bin" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}")
+    file(COPY "C:/Program Files (x86)/lua/bin/liblua.dll" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/bin")
 endif(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
 
 message("====================================")
