@@ -109,7 +109,6 @@ file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/assets" DESTINATION "${CMAKE_CURRENT_BINA
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/res/bin" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}")
-    file(COPY "${CMAKE_BINARY_DIR}/src/lib/Quantum-Engine/lib/lua/liblua.dll" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/bin")
 endif(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
 
 message("====================================")
