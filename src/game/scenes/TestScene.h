@@ -2,7 +2,7 @@
 #define TESTSCENE_H
 
 #include "quantum/Scene.h"
-#include "quantum/Vector2D.h"
+#include "quantum/Vector2.h"
 #include "quantum/Libraries.h"
 #include "quantum/systems/2D/Physics.h"
 #include "quantum/systems/2D/AssetRendering.h"

@@ -51,12 +51,12 @@ void TestScene::onLoop()
     // If there is no directional key pressed, smoot the stop of the camera
     components2D::Physics* p;
     p = (components2D::Physics*) mainCamera->getComponent<components2D::Physics>();
-    if (keyDown == false && p->getVelocity() != Vector2D(0,0))
+    if (keyDown == false && p->getVelocity() != Vector2(0,0))
     {
         // Camera Smoothing
-        Vector2D velocity;
+        Vector2 velocity;
 
-        velocity = math::interpolate(math::interpolation::EasyIn, p->getVelocity(), Vector2D(0,0), math::Normalize(timeKeyUp, timeKeyUp + 1000, Game::getTime()));
+        velocity = math::interpolate(math::interpolation::EasyIn, p->getVelocity(), Vector2(0,0), math::Normalize(timeKeyUp, timeKeyUp + 1000, Game::getTime()));
         p->setVelocity(velocity);
     }
 }
