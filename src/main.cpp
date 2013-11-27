@@ -1,12 +1,12 @@
 #include <iostream>
-#include "Game/TestGame2D.h"
+#include "game/TestGame2D.h"
 
 int main(int argc, char** argv)
 {
     TestGame2D* game;
 
     game = new TestGame2D();
-    game->Start();
+    game->start();
 
     delete game;
 

@@ -16,5 +16,4 @@ CMakeFiles
 Makefile
 cmake_install.cmake
 install_manifest.txt
-Build/*
-!Build/README.md
+build

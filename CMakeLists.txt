@@ -17,7 +17,7 @@ add_subdirectory("${CMAKE_SOURCE_DIR}/src/lib/Quantum-Engine")
 project("Quantum")
 
 set(QUANTUM_VERSION "0.1")
-set(QUANTUM_VERSION_LONG "0.1 - Build 14-Oct-2013")
+set(QUANTUM_VERSION_LONG "0.1 - Build 01-Nov-2013")
 
 # Specify build output directories
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
@@ -44,15 +44,15 @@ ENDMACRO()
 # =================================================================
 # Source Files (.cpp files)
 # =================================================================
-file(GLOB_RECURSE SOURCE_FILES "${CMAKE_SOURCE_DIR}/src/Game/*.cpp")
+file(GLOB_RECURSE SOURCE_FILES "${CMAKE_SOURCE_DIR}/src/game/*.cpp")
 # Add the main file
 set(SOURCE_FILES ${SOURCE_FILES} "${CMAKE_SOURCE_DIR}/src/main.cpp")
 
 # =================================================================
 # Include directories (containing .h files)
 # =================================================================
-SUBDIRLIST(INCLUDE_DIRECTORIES "${CMAKE_SOURCE_DIR}/src/Game")
-file(GLOB_RECURSE HEADER_FILES "${CMAKE_SOURCE_DIR}/src/Game/*.h")
+SUBDIRLIST(INCLUDE_DIRECTORIES "${CMAKE_SOURCE_DIR}/src/game")
+file(GLOB_RECURSE HEADER_FILES "${CMAKE_SOURCE_DIR}/src/game/*.h")
 # =================================================================
 # Libraries
 # =================================================================
@@ -62,6 +62,8 @@ file(GLOB_RECURSE HEADER_FILES "${CMAKE_SOURCE_DIR}/src/Game/*.h")
 set(INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} "${CMAKE_SOURCE_DIR}/src/lib/Quantum-Engine/include")
 set(INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} "${CMAKE_SOURCE_DIR}/src/lib/Quantum-Engine/lib/Artemis-Cpp/include")
 set(INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} "${CMAKE_SOURCE_DIR}/src/lib/Quantum-Engine/lib/JsonCpp/include")
+set(INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} "${CMAKE_SOURCE_DIR}/src/lib/Quantum-Engine/lib/lua/src")
+set(INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} "${CMAKE_BINARY_DIR}/src/lib/Quantum-Engine/lib/lua") # Weird lua requeriment for luaconf.h (it is generated during the compilation)
 
 # =================================================================
 # Resources
@@ -103,13 +105,10 @@ target_link_libraries(Quantum QuantumEngine)
 # =================================================================
 # Resources
 # =================================================================
-#add_custom_command(TARGET Quantum PRE_BUILD
-#                   COMMAND ${CMAKE_COMMAND} -E copy_directory
-#                       "${CMAKE_CURRENT_SOURCE_DIR}/Assets" "${CMAKE_CURRENT_BINARY_DIR}/Assets")
 file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/assets" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/bin")
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
-  file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/res/bin" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}")
+    file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/res/bin" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}")
 endif(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
 
 message("====================================")
