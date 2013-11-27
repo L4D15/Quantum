@@ -6,6 +6,7 @@
 #include "quantum/Libraries.h"
 #include "quantum/systems/2D/Physics.h"
 #include "quantum/systems/2D/AssetRendering.h"
+#include "quantum/systems/2D/Collisions.h"
 #include "quantum/Sprite.h"
 #include "quantum/AnimatedSprite.h"
 
@@ -27,19 +28,22 @@ public:
     void onKeyUp(SDL_Keycode key, Uint16 mod);
 
 private:
-    GameObject* object;
-    GameObject* background;
-
-    assets2D::Sprite* image;
-    assets2D::AnimatedSprite* sprite;
-    assets2D::Sprite* bgImage;
-
+    // Systems
     systems2D::Physics* physicsSystem;
     systems2D::AssetRendering* renderingSystem;
+    systems2D::Collisions* collisionsSystem;
 
     // Control related
     int timeKeyUp;
     bool keyDown;
+    bool playerKeyDown;
+
+    // Objects
+    GameObject* background;
+    GameObject* bonfire;
+    GameObject* woodCrate;
+    GameObject* player;
+    GameObject* zero;
 
 };
 

@@ -14,7 +14,7 @@ TestGame2D::~TestGame2D()
 
 void TestGame2D::start()
 {
-    createWindow(false);
+    createWindow(1366, 720, false);
     this->sceneManager.addScene(new TestScene());
     this->sceneManager.changeToScene("Test Scene");
     Game2D::start();
