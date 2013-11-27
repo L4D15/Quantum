@@ -11,8 +11,8 @@ TestScene::TestScene() :
     this->renderingSystem = (systems2D::AssetRendering*) addSystem(new systems2D::AssetRendering());
 
     // Resources
-    sprite = Game::resourceManager.getAnimatedSprite("zero.png");
-    bgImage = Game::resourceManager.getSprite("bg.png");
+    sprite = Game::resourceManager.GetAnimatedSprite("zero.png");
+    bgImage = Game::resourceManager.GetSprite("bg.png");
 
     // Objects
     object = createGameObject("Object");

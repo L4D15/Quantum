@@ -1,5 +1,5 @@
 #include "TestGame2D.h"
-#include "Scenes/TestScene.h"
+#include "scenes/TestScene.h"
 
 TestGame2D::TestGame2D() :
     Game2D("Quantum")
@@ -12,10 +12,10 @@ TestGame2D::~TestGame2D()
 
 }
 
-void TestGame2D::Start()
+void TestGame2D::start()
 {
-    CreateWindow(false);
-    this->sceneManager.AddScene(new TestScene());
-    this->sceneManager.ChangeToScene("Test Scene");
-    Game2D::Start();
+    createWindow(false);
+    this->sceneManager.addScene(new TestScene());
+    this->sceneManager.changeToScene("Test Scene");
+    Game2D::start();
 }
