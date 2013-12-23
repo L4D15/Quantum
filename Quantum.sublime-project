@@ -1,0 +1,19 @@
+{
+	"folders":
+	[
+		{
+			"path": "/Users/ladis/Desktop/Quantum"
+		}
+	],
+	"settings":
+    {
+        "sublimegdb_commandline": "gdb --interpreter=mi myapp",
+        "sublimegdb_workingdir": "build",
+
+        "sublimeclang_options" :
+        [
+            "-I${project_folder}/src/include",
+            "-I${project_folder}/stc/lib/Quantum-Engine/include"
+        ]
+    }
+}

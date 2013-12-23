@@ -12,7 +12,7 @@ TestScene::TestScene() :
 
     // Resources
     sprite = Game::resourceManager.getAnimatedSprite("zero.png");
-    bgImage = Game::resourceManager.getSprite("bg.png");
+    bgImage = Game::resourceManager.getSprite("background.png");
 
     // Objects
     object = createGameObject("Object");

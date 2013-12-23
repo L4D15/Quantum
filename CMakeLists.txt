@@ -17,7 +17,7 @@ add_subdirectory("${CMAKE_SOURCE_DIR}/src/lib/Quantum-Engine")
 project("Quantum")
 
 set(QUANTUM_VERSION "0.1")
-set(QUANTUM_VERSION_LONG "0.1 - Build 01-Nov-2013")
+set(QUANTUM_VERSION_LONG "0.1 - Build 23-Dic-2013")
 
 # Specify build output directories
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
@@ -61,14 +61,14 @@ file(GLOB_RECURSE HEADER_FILES "${CMAKE_SOURCE_DIR}/src/game/*.h")
 # and add QuantumEngine (the name the library have in the subdir CMakeLists.txt) to the target_link_libraries (at the end of the file)
 set(INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} "${CMAKE_SOURCE_DIR}/src/lib/Quantum-Engine/include")
 set(INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} "${CMAKE_SOURCE_DIR}/src/lib/Quantum-Engine/lib/Artemis-Cpp/include")
-set(INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} "${CMAKE_SOURCE_DIR}/src/lib/Quantum-Engine/lib/JsonCpp/include")
+set(INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} "${CMAKE_SOURCE_DIR}/src/lib/Quantum-Engine/lib/json-spirit/include")
 set(INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} "${CMAKE_SOURCE_DIR}/src/lib/Quantum-Engine/lib/lua/src")
 set(INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} "${CMAKE_BINARY_DIR}/src/lib/Quantum-Engine/lib/lua") # Weird lua requeriment for luaconf.h (it is generated during the compilation)
 
 # =================================================================
 # Resources
 # =================================================================
-file(GLOB_RECURSE RESOURCE_FILES_IMAGES "${CMAKE_SOURCE_DIR}/../assets/images/*")
+file(GLOB_RECURSE RESOURCE_FILES_IMAGES "${CMAKE_SOURCE_DIR}/assets/images/*")
 message("Images: ${RESOURCE_FILES_IMAGES}")
 
 if(APPLE)
@@ -88,13 +88,14 @@ foreach(dir ${INCLUDE_DIRECTORIES})
 endforeach(dir)
 
 if(APPLE)
+    message("Configuring Mac OS X Bundle")
     set(MACOSX_BUNDLE true)
     set(MACOSX_BUNDLE_BUNDLE_NAME Quantum)
     set(MACOSX_BUNDLE_INFO_STRING "Quantum ${QUANTUM_VERSION}")
     set(MACOSX_BUNDLE_LONG_VERSION_STRING "${QUANTUM_VERSION_LONG}")
     set(MACOSX_BUNDLE_SHORT_VERSION_STRING "${QUANTUM_VERSION}")
     set(MACOSX_BUNDLE_BUNDLE_VERSION "${QUANTUM_VERSION}")
-    set(MACOSX_BUNDLE_ICON_FILE "${CMAKE_SOURCE_DIR}/assets/App Icon.icns")
+    set(MACOSX_BUNDLE_ICON_FILE "${CMAKE_SOURCE_DIR}/assets/Icon.icns")
     add_executable(Quantum MACOSX_BUNDLE ${SOURCE_FILES} ${RESOURCE_FILES_IMAGES})
 else(APPLE)
     add_executable(Quantum ${SOURCE_FILES})
@@ -105,7 +106,9 @@ target_link_libraries(Quantum QuantumEngine)
 # =================================================================
 # Resources
 # =================================================================
-file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/assets" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/bin")
+if(NOT APPLE)
+    file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/assets" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/bin")
+endif(NOT APPLE)
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/res/bin" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}")
