@@ -1,0 +1,11 @@
+{
+    "animations":
+    [
+        {
+            "name": "Static",
+            "frames": 1,
+            "oscillate": false,
+            "frame-rate": 1000
+        }
+    ]
+}

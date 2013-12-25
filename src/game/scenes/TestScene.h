@@ -27,13 +27,6 @@ public:
     void onKeyUp(SDL_Keycode key, Uint16 mod);
 
 private:
-    GameObject* object;
-    GameObject* background;
-
-    assets2D::Sprite* image;
-    assets2D::AnimatedSprite* sprite;
-    assets2D::Sprite* bgImage;
-
     systems2D::Physics* physicsSystem;
     systems2D::AssetRendering* renderingSystem;
 
