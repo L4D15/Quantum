@@ -59,7 +59,7 @@
 			"file": "Quantum.sublime-project",
 			"settings":
 			{
-				"buffer_size": 370,
+				"buffer_size": 545,
 				"line_ending": "Unix"
 			}
 		},
@@ -67,7 +67,23 @@
 			"file": "src/lib/Quantum-Engine/src/engine/Sprite.cpp",
 			"settings":
 			{
-				"buffer_size": 10961,
+				"buffer_size": 8132,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/lib/Quantum-Engine/include/quantum/Libraries.h",
+			"settings":
+			{
+				"buffer_size": 651,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "scripts/compileflags.rb",
+			"settings":
+			{
+				"buffer_size": 769,
 				"line_ending": "Unix"
 			}
 		}
@@ -75,9 +91,17 @@
 	"build_system": "Build",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 54.0,
 		"selected_items":
 		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"clear",
+				"SublimeClang: Clear cache"
+			],
 			[
 				"gdb",
 				"Preferences: SublimeGDB Settings – Default"
@@ -89,13 +113,9 @@
 			[
 				"clang",
 				"SublimeClang: Clear cache"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
 			]
 		],
-		"width": 449.0
+		"width": 530.0
 	},
 	"console":
 	{
@@ -112,6 +132,7 @@
 	},
 	"file_history":
 	[
+		"/home/jladis/Projects/Quantum/src/lib/Quantum-Engine/include/quantum/Libraries.h",
 		"/Users/ladis/Desktop/TestingJSON/TestJSON.sublime-project",
 		"/Users/ladis/Desktop/TestingJSON/lib/json-spirit/demo/simple/simple.cpp",
 		"/Users/ladis/Desktop/TestingJSON/assets/ladis.json",
@@ -194,7 +215,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -202,23 +223,25 @@
 					"file": "Quantum.sublime-project",
 					"settings":
 					{
-						"buffer_size": 370,
+						"buffer_size": 545,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								361,
-								361
+								536,
+								536
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 51.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -228,20 +251,74 @@
 					"file": "src/lib/Quantum-Engine/src/engine/Sprite.cpp",
 					"settings":
 					{
-						"buffer_size": 10961,
+						"buffer_size": 8132,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								123,
-								123
+								23,
+								23
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/lib/Quantum-Engine/include/quantum/Libraries.h",
+					"settings":
+					{
+						"buffer_size": 651,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8,
+								8
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "scripts/compileflags.rb",
+					"settings":
+					{
+						"buffer_size": 769,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								427,
+								427
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
@@ -318,6 +395,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 311.0,
+	"side_bar_width": 329.0,
 	"status_bar_visible": true
 }

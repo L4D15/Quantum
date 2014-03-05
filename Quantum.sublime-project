@@ -2,9 +2,19 @@
 	"folders":
 	[
 		{
-			"path": "/Users/ladis/Desktop/Quantum"
+			"path": "."
 		}
 	],
+
+    "build_systems":
+    [
+        {
+            "name": "Build",
+            "cmd": [ "make", "-C", "build"],
+            "file_regex": "/([^/:]+):(\\d+):(\\d+): "
+        }
+    ],
+
 	"settings":
     {
         "sublimegdb_commandline": "gdb --interpreter=mi myapp",
@@ -12,8 +22,8 @@
 
         "sublimeclang_options" :
         [
-            "-I${project_folder}/src/include",
-            "-I${project_folder}/stc/lib/Quantum-Engine/include"
-        ]
+            "-Wno-reorder"
+        ],
+        "sublimeclang_options_script": "${project_path:scripts/compileflags.rb ${project_path:build}"
     }
 }
